@@ -18,19 +18,20 @@
 
     <style>
     .parent-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  width: 100%;
-}
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+    }
 
-.video-container {
-  flex: 0 0 100%;
-  max-width: 100%;
-  transition: transform 0.3s ease-in-out;
-}
+    .video-container {
+      flex: 0 0 100%;
+      max-width: 100%;
+      transition: transform 0.3s ease-in-out;
+    }
 
 
     .video-container .play-icon {
@@ -64,23 +65,36 @@
   </style>
 
     <script>
-       const leftArrow = document.querySelector('.left-arrow');
+ const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 const parentContainer = document.querySelector('.parent-container');
 
-leftArrow.addEventListener('click', () => {
-  parentContainer.scrollBy({
-    left: -parentContainer.offsetWidth,
-    behavior: 'smooth'
-  });
-});
+let currentIndex = 0;
 
-rightArrow.addEventListener('click', () => {
-  parentContainer.scrollBy({
-    left: parentContainer.offsetWidth,
+leftArrow.addEventListener('click', scrollLeft);
+rightArrow.addEventListener('click', scrollRight);
+
+function scrollLeft() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    scrollToCurrentIndex();
+  }
+}
+
+function scrollRight() {
+  if (currentIndex < parentContainer.childElementCount - 1) {
+    currentIndex++;
+    scrollToCurrentIndex();
+  }
+}
+
+function scrollToCurrentIndex() {
+  const offset = currentIndex * parentContainer.offsetWidth;
+  parentContainer.scrollTo({
+    left: offset,
     behavior: 'smooth'
   });
-});
+}
         function playVideo(video) {
           video.play();
         }
@@ -223,8 +237,8 @@ over the state-of-the-art methods by a significant margin.</p>
 
 
     <!--  for arrow-->
-    <div class="arrow left-arrow">&#8592;</div>
-    <div class="arrow right-arrow">&#8594;</div>
+    <div class="arrow left-arrow" onclick="scrollLeft()">&#8592;</div>
+    <div class="arrow right-arrow" onclick="scrollRight()">&#8594;</div>
 
 </div>
 
