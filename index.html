@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<body>
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -15,7 +15,40 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    
+
+    <style>
+    .video-container {
+      display: inline-block;
+      margin: 20px;
+      position: relative;
+    }
+
+    .video-container video {
+      width: 320px;
+      height: 240px;
+    }
+
+    .video-container .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  </style>
+
+    <script>
+    function playVideo(video) {
+      video.play();
+    }
+
+    function pauseVideo(video) {
+      video.pause();
+    }
+  </script>
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.1091.0" data-gr-ext-installed="">
@@ -132,6 +165,50 @@ over the state-of-the-art methods by a significant margin.</p>
     </div>
 </div>
 	
+<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Demo</h2>
+          <!-- <div class="content has-text-justified">
+            <li><b>Cross-modal Instruction-Following</b>
+            <li><b>Speech Dialogue</b>
+          </div> -->
+        </div>
+      </div>
+      <div class="video-container">
+    <video
+      src="demo/0ghQpuyFfD8___top1.mp4"
+      type="video/mp4"
+      onmouseover="playVideo(this)"
+      onmouseout="pauseVideo(this)"
+    ></video>
+    <div class="play-icon">&#9658;</div>
+  </div>
+
+  <div class="video-container">
+    <video
+      src="demo/5FGGtdmD8_U.mp4"
+      type="video/mp4"
+      onmouseover="playVideo(this)"
+      onmouseout="pauseVideo(this)"
+    ></video>
+    <div class="play-icon">&#9658;</div>
+  </div>
+
+  <div class="video-container">
+    <video
+      src="demo/U3Z_e2PL324.mp4"
+      type="video/mp4"
+      onmouseover="playVideo(this)"
+      onmouseout="pauseVideo(this)"
+    ></video>
+    <div class="play-icon">&#9658;</div>
+  </div>
+<!--    <div class="text-center">-->
+<!--        <img id="teaser" width="90%" src="media/framework.png">-->
+<!--    </div>-->
+</div>
+
 
 <!--<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">-->
 <!--    <h3>Cross-modal Instruction Following:</h3>-->
