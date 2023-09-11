@@ -38,16 +38,53 @@
       cursor: pointer;
       opacity: 0.7;
     }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: #000;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .left-arrow {
+      left: 10px;
+    }
+
+    .right-arrow {
+      right: 10px;
+    }
   </style>
 
     <script>
-    function playVideo(video) {
-      video.play();
-    }
+        var currentVideoIndex = 0;
+        var videos = document.querySelectorAll('.video-container video');
 
-    function pauseVideo(video) {
-      video.pause();
-    }
+        function showVideo(index) {
+          videos[currentVideoIndex].pause();
+          videos[currentVideoIndex].currentTime = 0;
+          videos[index].play();
+          currentVideoIndex = index;
+        }
+
+        function showNextVideo() {
+          var nextIndex = (currentVideoIndex + 1) % videos.length;
+          showVideo(nextIndex);
+        }
+
+        function showPreviousVideo() {
+          var previousIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+          showVideo(previousIndex);
+        }
+        function playVideo(video) {
+          video.play();
+        }
+
+        function pauseVideo(video) {
+          video.pause();
+        }
   </script>
 </head>
 
@@ -204,6 +241,10 @@ over the state-of-the-art methods by a significant margin.</p>
     ></video>
     <div class="play-icon">&#9658;</div>
   </div>
+
+    <!--  for arrow-->
+    <div class="arrow left-arrow" onclick="showPreviousVideo()">&#8592;</div>
+    <div class="arrow right-arrow" onclick="showNextVideo()">&#8594;</div>
 <!--    <div class="text-center">-->
 <!--        <img id="teaser" width="90%" src="media/framework.png">-->
 <!--    </div>-->
